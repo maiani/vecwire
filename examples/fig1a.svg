@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="86pt" height="118pt" viewBox="0 0 86 118">
+  <g data-component="node" id="left_top" data-x="18" data-y="14"/>
+  <g data-component="node" id="right_top" data-x="54" data-y="14"/>
+  <g data-component="node" id="left_bottom" data-x="18" data-y="104"/>
+  <g data-component="node" id="ground_node" data-x="36" data-y="104"/>
+  <g data-component="node" id="right_bottom" data-x="54" data-y="104"/>
+  <g data-component="node" id="coil_top" data-x="54" data-y="20"/>
+  <g data-component="node" id="coil_bottom" data-x="54" data-y="44"/>
+  <g data-component="node" id="split_center" data-x="54" data-y="60"/>
+  <g data-component="node" id="join_center" data-x="54" data-y="88"/>
+  <g data-component="node" id="junction_top" data-x="46" data-y="60"/>
+  <g data-component="node" id="junction_bottom" data-x="46" data-y="88"/>
+  <g data-component="node" id="parasitic_top" data-x="62" data-y="60"/>
+  <g data-component="node" id="parasitic_bottom" data-x="62" data-y="88"/>
+  <g data-component="wire" id="upper-rail" data-from="left_top" data-to="right_top" data-through="phi">
+    <path d="M 18 14 L 36 14 L 54 14" fill="none" stroke="#262626" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g data-component="wire" id="lower-rail" data-from="left_bottom" data-to="right_bottom" data-through="ground_node">
+    <path d="M 18 104 L 36 104 L 54 104" fill="none" stroke="#262626" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g data-component="capacitor" id="shunt-C" data-from="left_top" data-to="left_bottom">
+    <line x1="18" y1="14" x2="18" y2="57" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="18" y1="61" x2="18" y2="104" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="25" y1="57" x2="11" y2="57" stroke="#262626" stroke-width="1.3" stroke-linecap="round"/>
+    <line x1="25" y1="61" x2="11" y2="61" stroke="#262626" stroke-width="1.3" stroke-linecap="round"/>
+  </g>
+  <g data-component="ground" id="ground" data-node="ground_node">
+    <line x1="36" y1="104" x2="36" y2="108" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="30" y1="108" x2="42" y2="108" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="32.2" y1="110.4" x2="39.8" y2="110.4" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="34.4" y1="112.8" x2="37.6" y2="112.8" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+  </g>
+  <g data-component="wire" id="upper-lead" data-from="right_top" data-to="coil_top">
+    <path d="M 54 14 L 54 20" fill="none" stroke="#262626" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g data-component="inductor" id="L" data-from="coil_top" data-to="coil_bottom">
+    <path d="M 54 20 A 3 3 0 0 1 54 26 A 3 3 0 0 1 54 32 A 3 3 0 0 1 54 38 A 3 3 0 0 1 54 44" fill="none" stroke="#262626" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g data-component="wire" id="internal-lead" data-from="coil_bottom" data-to="split_center" data-through="delta">
+    <path d="M 54 44 L 54 52 L 54 60" fill="none" stroke="#262626" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g data-component="wire" id="parallel-top" data-from="junction_top" data-to="parasitic_top" data-through="split_center">
+    <path d="M 46 60 L 54 60 L 62 60" fill="none" stroke="#262626" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g data-component="wire" id="parallel-bottom" data-from="junction_bottom" data-to="parasitic_bottom" data-through="join_center">
+    <path d="M 46 88 L 54 88 L 62 88" fill="none" stroke="#262626" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g data-component="josephson-junction" id="VJ" data-from="junction_top" data-to="junction_bottom">
+    <line x1="46" y1="60" x2="46" y2="70.4" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="46" y1="77.6" x2="46" y2="88" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="49.6" y1="70.4" x2="42.4" y2="77.6" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="42.4" y1="70.4" x2="49.6" y2="77.6" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+  </g>
+  <g data-component="capacitor" id="CJ" data-from="parasitic_top" data-to="parasitic_bottom">
+    <line x1="62" y1="60" x2="62" y2="72.2" stroke="#737373" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="62" y1="75.8" x2="62" y2="88" stroke="#737373" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="66.5" y1="72.2" x2="57.5" y2="72.2" stroke="#737373" stroke-width="1.3" stroke-linecap="round"/>
+    <line x1="66.5" y1="75.8" x2="57.5" y2="75.8" stroke="#737373" stroke-width="1.3" stroke-linecap="round"/>
+  </g>
+  <g data-component="wire" id="lower-lead" data-from="join_center" data-to="right_bottom">
+    <path d="M 54 88 L 54 104" fill="none" stroke="#262626" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g data-component="label" id="label-C" fill="#262626">
+    <text x="8.5" y="59" font-size="8" text-anchor="end" dominant-baseline="middle">C</text>
+  </g>
+  <g data-component="label" id="label-L" fill="#262626">
+    <text x="61.5" y="32" font-size="8" text-anchor="start" dominant-baseline="middle">L</text>
+  </g>
+  <g data-component="label" id="label-VJ" fill="#262626">
+    <text x="40.5" y="74" font-size="8" text-anchor="end" dominant-baseline="middle">Vⱼ</text>
+  </g>
+  <g data-component="label" id="label-CJ" fill="#737373">
+    <text x="68.5" y="74" font-size="8" text-anchor="start" dominant-baseline="middle">Cⱼ</text>
+  </g>
+  <g data-component="label" id="label-phi" fill="#262626">
+    <text x="36" y="11" font-size="8" text-anchor="middle" dominant-baseline="auto">φ</text>
+  </g>
+  <g data-component="label" id="label-delta" fill="#262626">
+    <text x="50" y="52" font-size="8" text-anchor="end" dominant-baseline="middle">δ</text>
+  </g>
+  <g data-component="node" id="phi" data-x="36" data-y="14">
+    <circle cx="36" cy="14" r="1.6" fill="#262626"/>
+  </g>
+  <g data-component="node" id="delta" data-x="54" data-y="52">
+    <circle cx="54" cy="52" r="1.6" fill="#262626"/>
+  </g>
+</svg>

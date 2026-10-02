@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="206pt" height="112pt" viewBox="0 0 206 112">
+  <g data-component="node" id="bare_top" data-x="12" data-y="6"/>
+  <g data-component="node" id="bare_bottom" data-x="12" data-y="30"/>
+  <g data-component="josephson-junction" id="legend-bare" data-from="bare_top" data-to="bare_bottom">
+    <line x1="12" y1="6" x2="12" y2="13.5" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="12" y1="22.5" x2="12" y2="30" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="16.5" y1="13.5" x2="7.5" y2="22.5" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="7.5" y1="13.5" x2="16.5" y2="22.5" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+  </g>
+  <g data-component="label" id="label-bare" fill="#262626">
+    <text x="19" y="18" font-size="7" text-anchor="start" dominant-baseline="middle">JJ</text>
+  </g>
+  <g data-component="node" id="cos1_top" data-x="52" data-y="6"/>
+  <g data-component="node" id="cos1_bottom" data-x="52" data-y="30"/>
+  <g data-component="josephson-junction" id="legend-cos1" data-from="cos1_top" data-to="cos1_bottom" data-harmonic="1" data-kind="cos">
+    <line x1="52" y1="6" x2="52" y2="13.5" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="52" y1="22.5" x2="52" y2="30" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <rect x="47.5" y="13.5" width="9" height="9" fill="none" stroke="#4a3aa7" stroke-width="0.9" stroke-linejoin="round"/>
+    <line x1="47.5" y1="13.5" x2="56.5" y2="22.5" stroke="#4a3aa7" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="47.5" y1="22.5" x2="56.5" y2="13.5" stroke="#4a3aa7" stroke-width="0.9" stroke-linecap="round"/>
+  </g>
+  <g data-component="label" id="label-cos1" fill="#262626">
+    <text x="59" y="18" font-size="7" text-anchor="start" dominant-baseline="middle">cos φ</text>
+  </g>
+  <g data-component="node" id="cos2_top" data-x="92" data-y="6"/>
+  <g data-component="node" id="cos2_bottom" data-x="92" data-y="30"/>
+  <g data-component="josephson-junction" id="legend-cos2" data-from="cos2_top" data-to="cos2_bottom" data-harmonic="2" data-kind="cos">
+    <line x1="92" y1="6" x2="92" y2="13.5" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="92" y1="22.5" x2="92" y2="30" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <rect x="87.5" y="13.5" width="9" height="9" fill="none" stroke="#8075c1" stroke-width="0.9" stroke-linejoin="round"/>
+    <line x1="89.525" y1="13.5" x2="96.5" y2="20.475" stroke="#8075c1" stroke-width="0.675" stroke-linecap="round"/>
+    <line x1="87.5" y1="15.525" x2="94.475" y2="22.5" stroke="#8075c1" stroke-width="0.675" stroke-linecap="round"/>
+    <line x1="87.5" y1="20.475" x2="94.475" y2="13.5" stroke="#8075c1" stroke-width="0.675" stroke-linecap="round"/>
+    <line x1="89.525" y1="22.5" x2="96.5" y2="15.525" stroke="#8075c1" stroke-width="0.675" stroke-linecap="round"/>
+  </g>
+  <g data-component="label" id="label-cos2" fill="#262626">
+    <text x="99" y="18" font-size="7" text-anchor="start" dominant-baseline="middle">cos 2φ</text>
+  </g>
+  <g data-component="node" id="cos3_top" data-x="132" data-y="6"/>
+  <g data-component="node" id="cos3_bottom" data-x="132" data-y="30"/>
+  <g data-component="josephson-junction" id="legend-cos3" data-from="cos3_top" data-to="cos3_bottom" data-harmonic="3" data-kind="cos">
+    <line x1="132" y1="6" x2="132" y2="13.5" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="132" y1="22.5" x2="132" y2="30" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <rect x="127.5" y="13.5" width="9" height="9" fill="none" stroke="#a59dd3" stroke-width="0.9" stroke-linejoin="round"/>
+    <line x1="130.2" y1="13.5" x2="136.5" y2="19.8" stroke="#a59dd3" stroke-width="0.675" stroke-linecap="round"/>
+    <line x1="127.5" y1="13.5" x2="136.5" y2="22.5" stroke="#a59dd3" stroke-width="0.675" stroke-linecap="round"/>
+    <line x1="127.5" y1="16.2" x2="133.8" y2="22.5" stroke="#a59dd3" stroke-width="0.675" stroke-linecap="round"/>
+    <line x1="127.5" y1="19.8" x2="133.8" y2="13.5" stroke="#a59dd3" stroke-width="0.675" stroke-linecap="round"/>
+    <line x1="127.5" y1="22.5" x2="136.5" y2="13.5" stroke="#a59dd3" stroke-width="0.675" stroke-linecap="round"/>
+    <line x1="130.2" y1="22.5" x2="136.5" y2="16.2" stroke="#a59dd3" stroke-width="0.675" stroke-linecap="round"/>
+  </g>
+  <g data-component="label" id="label-cos3" fill="#262626">
+    <text x="139" y="18" font-size="7" text-anchor="start" dominant-baseline="middle">cos 3φ</text>
+  </g>
+  <g data-component="node" id="sin1_top" data-x="172" data-y="6"/>
+  <g data-component="node" id="sin1_bottom" data-x="172" data-y="30"/>
+  <g data-component="josephson-junction" id="legend-sin1" data-from="sin1_top" data-to="sin1_bottom" data-harmonic="1" data-kind="sin">
+    <line x1="172" y1="6" x2="172" y2="13.5" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="172" y1="22.5" x2="172" y2="30" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <rect x="167.5" y="13.5" width="9" height="9" fill="none" stroke="#1baf7a" stroke-width="0.9" stroke-linejoin="round"/>
+    <line x1="167.5" y1="13.5" x2="176.5" y2="22.5" stroke="#1baf7a" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="167.5" y1="22.5" x2="176.5" y2="13.5" stroke="#1baf7a" stroke-width="0.9" stroke-linecap="round"/>
+    <circle cx="169.57" cy="18" r="0.775" fill="#1baf7a"/>
+    <circle cx="174.43" cy="18" r="0.775" fill="#1baf7a"/>
+  </g>
+  <g data-component="label" id="label-sin1" fill="#262626">
+    <text x="179" y="18" font-size="7" text-anchor="start" dominant-baseline="middle">sin φ</text>
+  </g>
+  <g data-component="node" id="branch_top" data-x="39" data-y="44"/>
+  <g data-component="node" id="coil_top" data-x="39" data-y="50"/>
+  <g data-component="node" id="coil_bottom" data-x="39" data-y="70"/>
+  <g data-component="node" id="branch_bottom" data-x="39" data-y="106"/>
+  <g data-component="wire" id="series-upper-lead" data-from="branch_top" data-to="coil_top">
+    <path d="M 39 44 L 39 50" fill="none" stroke="#262626" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g data-component="inductor" id="series-L" data-from="coil_top" data-to="coil_bottom">
+    <path d="M 39 50 A 2.5 2.5 0 0 1 39 55 A 2.5 2.5 0 0 1 39 60 A 2.5 2.5 0 0 1 39 65 A 2.5 2.5 0 0 1 39 70" fill="none" stroke="#262626" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g data-component="josephson-junction" id="series-JJ" data-from="coil_bottom" data-to="branch_bottom" data-harmonic="1" data-kind="cos">
+    <line x1="39" y1="70" x2="39" y2="83.5" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="39" y1="92.5" x2="39" y2="106" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <rect x="34.5" y="83.5" width="9" height="9" fill="none" stroke="#4a3aa7" stroke-width="0.9" stroke-linejoin="round"/>
+    <line x1="34.5" y1="83.5" x2="43.5" y2="92.5" stroke="#4a3aa7" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="34.5" y1="92.5" x2="43.5" y2="83.5" stroke="#4a3aa7" stroke-width="0.9" stroke-linecap="round"/>
+  </g>
+  <g data-component="box" id="series-branch">
+    <rect x="27" y="47" width="30" height="55" fill="none" stroke="#262626" stroke-width="0.675" stroke-linejoin="round" rx="2" ry="2" stroke-dasharray="2.2 1.6"/>
+  </g>
+  <g data-component="label" id="label-L" fill="#262626">
+    <text x="46" y="60" font-size="8" text-anchor="start" dominant-baseline="middle">L</text>
+  </g>
+  <g data-component="label" id="label-approx" fill="#262626">
+    <text x="67" y="75" font-size="10" text-anchor="middle" dominant-baseline="middle">≃</text>
+  </g>
+  <g data-component="node" id="sum_top" data-x="133" data-y="44"/>
+  <g data-component="node" id="sum_bottom" data-x="133" data-y="106"/>
+  <g data-component="harmonic-sum" id="multiharmonic" data-from="sum_top" data-to="sum_bottom" data-orders="1 2 3">
+    <line x1="133" y1="44" x2="133" y2="66.45" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="133" y1="83.55" x2="133" y2="106" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <rect x="97.495" y="64.05" width="71.01" height="21.9" fill="none" stroke="#262626" stroke-width="0.675" stroke-linejoin="round" rx="2" ry="2" stroke-dasharray="2.2 1.6"/>
+    <g data-component="rail" id="multiharmonic-rail-top">
+      <line x1="104.395" y1="66.45" x2="162.805" y2="66.45" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    </g>
+    <g data-component="rail" id="multiharmonic-rail-bottom">
+      <line x1="104.395" y1="83.55" x2="162.805" y2="83.55" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    </g>
+    <g data-component="josephson-junction" id="multiharmonic-m1" data-harmonic="1" data-kind="cos">
+      <line x1="104.395" y1="70.5" x2="104.395" y2="66.45" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="104.395" y1="79.5" x2="104.395" y2="83.55" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+      <rect x="99.895" y="70.5" width="9" height="9" fill="none" stroke="#4a3aa7" stroke-width="0.9" stroke-linejoin="round"/>
+      <line x1="99.895" y1="70.5" x2="108.895" y2="79.5" stroke="#4a3aa7" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="99.895" y1="79.5" x2="108.895" y2="70.5" stroke="#4a3aa7" stroke-width="0.9" stroke-linecap="round"/>
+    </g>
+    <g data-component="josephson-junction" id="multiharmonic-m2" data-harmonic="2" data-kind="cos">
+      <line x1="124.195" y1="70.5" x2="124.195" y2="66.45" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="124.195" y1="79.5" x2="124.195" y2="83.55" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+      <rect x="119.695" y="70.5" width="9" height="9" fill="none" stroke="#8075c1" stroke-width="0.9" stroke-linejoin="round"/>
+      <line x1="121.72" y1="70.5" x2="128.695" y2="77.475" stroke="#8075c1" stroke-width="0.675" stroke-linecap="round"/>
+      <line x1="119.695" y1="72.525" x2="126.67" y2="79.5" stroke="#8075c1" stroke-width="0.675" stroke-linecap="round"/>
+      <line x1="119.695" y1="77.475" x2="126.67" y2="70.5" stroke="#8075c1" stroke-width="0.675" stroke-linecap="round"/>
+      <line x1="121.72" y1="79.5" x2="128.695" y2="72.525" stroke="#8075c1" stroke-width="0.675" stroke-linecap="round"/>
+    </g>
+    <g data-component="josephson-junction" id="multiharmonic-m3" data-harmonic="3" data-kind="cos">
+      <line x1="143.995" y1="70.5" x2="143.995" y2="66.45" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="143.995" y1="79.5" x2="143.995" y2="83.55" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+      <rect x="139.495" y="70.5" width="9" height="9" fill="none" stroke="#a59dd3" stroke-width="0.9" stroke-linejoin="round"/>
+      <line x1="142.195" y1="70.5" x2="148.495" y2="76.8" stroke="#a59dd3" stroke-width="0.675" stroke-linecap="round"/>
+      <line x1="139.495" y1="70.5" x2="148.495" y2="79.5" stroke="#a59dd3" stroke-width="0.675" stroke-linecap="round"/>
+      <line x1="139.495" y1="73.2" x2="145.795" y2="79.5" stroke="#a59dd3" stroke-width="0.675" stroke-linecap="round"/>
+      <line x1="139.495" y1="76.8" x2="145.795" y2="70.5" stroke="#a59dd3" stroke-width="0.675" stroke-linecap="round"/>
+      <line x1="139.495" y1="79.5" x2="148.495" y2="70.5" stroke="#a59dd3" stroke-width="0.675" stroke-linecap="round"/>
+      <line x1="142.195" y1="79.5" x2="148.495" y2="73.2" stroke="#a59dd3" stroke-width="0.675" stroke-linecap="round"/>
+    </g>
+    <g data-component="plus">
+      <line x1="111.775" y1="75" x2="116.815" y2="75" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="114.295" y1="72.48" x2="114.295" y2="77.52" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    </g>
+    <g data-component="plus">
+      <line x1="131.575" y1="75" x2="136.615" y2="75" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="134.095" y1="72.48" x2="134.095" y2="77.52" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    </g>
+    <g data-component="plus">
+      <line x1="150.385" y1="75" x2="155.425" y2="75" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="152.905" y1="72.48" x2="152.905" y2="77.52" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    </g>
+    <g data-component="ellipsis">
+      <circle cx="160.105" cy="75" r="0.6" fill="#262626"/>
+      <circle cx="162.805" cy="75" r="0.6" fill="#262626"/>
+      <circle cx="165.505" cy="75" r="0.6" fill="#262626"/>
+    </g>
+  </g>
+</svg>
