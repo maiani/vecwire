@@ -5,20 +5,26 @@ the first use case. The schematic is generated from code and stays editable
 afterwards: each component becomes a named SVG group, the same script writes
 byte-identical SVG, and the output opens in Inkscape.
 
+<p align="center">
+  <img src="docs/images/readme.svg" alt="A circuit-QED schematic: capacitor, inductor and a Josephson junction with its capacitance, labels typeset by TeX" width="340">
+</p>
+
+<p align="center"><sub>A circuit-QED schematic with labels typeset by VecTeX, from <code>examples/fig1a_cqed.py --tex</code>.</sub></p>
+
 The symbol set covers wires, capacitors, inductors, Josephson junctions (the
 bare X, boxed harmonic junctions, and multiharmonic junctions), ground symbols,
 connection nodes, dashed enclosures, and labels. Components connect named,
 positioned nodes and draw their own leads.
 
-VecWire is pre-alpha: a first version, unpublished, with an API that will
+VecWire is pre-alpha: a first version, not yet on PyPI, with an API that will
 change.
 
 ## Install
 
-VecWire is not on PyPI yet. Install it from a checkout (Python 3.12 or newer):
+VecWire is not on PyPI yet. Install it from GitHub (Python 3.12 or newer):
 
 ```bash
-python -m pip install -e /path/to/vecwire
+python -m pip install "vecwire @ git+https://github.com/maiani/vecwire"
 ```
 
 The only runtime dependency is lxml. For labels typeset by TeX, install the
