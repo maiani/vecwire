@@ -1,6 +1,6 @@
-# cirquit
+# VecWire
 
-cirquit draws electrical circuit schematics as SVG, with circuit-QED figures as
+VecWire draws electrical circuit schematics as SVG, with circuit-QED figures as
 the first use case. The schematic is generated from code and stays editable
 afterwards: each component becomes a named SVG group, the same script writes
 byte-identical SVG, and the output opens in Inkscape.
@@ -10,24 +10,22 @@ bare X, boxed harmonic junctions, and multiharmonic junctions), ground symbols,
 connection nodes, dashed enclosures, and labels. Components connect named,
 positioned nodes and draw their own leads.
 
-cirquit is pre-alpha: a first version, unpublished, with an API that will
+VecWire is pre-alpha: a first version, unpublished, with an API that will
 change.
 
 ## Install
 
-cirquit is not on PyPI, and the name `cirquit` there belongs to an unrelated
-quantum-computing package, so `pip install cirquit` installs the wrong thing.
-Install from a checkout (Python 3.12 or newer):
+VecWire is not on PyPI yet. Install it from a checkout (Python 3.12 or newer):
 
 ```bash
-python -m pip install -e /path/to/cirquit
+python -m pip install -e /path/to/vecwire
 ```
 
 The only runtime dependency is lxml. For labels typeset by TeX, install the
-optional Vectex extra; Vectex also needs `pdflatex` and `dvisvgm` on `PATH`:
+optional VecTeX extra; VecTeX also needs `pdflatex` and `dvisvgm` on `PATH`:
 
 ```bash
-python -m pip install -e '/path/to/cirquit[tex]'
+python -m pip install -e '/path/to/vecwire[tex]'
 ```
 
 ## Quick start
@@ -35,7 +33,7 @@ python -m pip install -e '/path/to/cirquit[tex]'
 A capacitively shunted Josephson junction, grounded at the bottom:
 
 ```python
-from cirquit import Circuit
+from vecwire import Circuit
 
 circuit = Circuit(70, 96)
 circuit.row(14, top_left=18, phi=35, top_right=52, dots={"phi"})
@@ -95,7 +93,7 @@ wire. A route still passes exactly through every named node it visits, even
 with a corner radius. Two-terminal symbols are placed horizontally or
 vertically.
 
-Labels take plain text or a Vectex fragment; a fragment's SVG group is embedded
+Labels take plain text or a VecTeX fragment; a fragment's SVG group is embedded
 as is, so it stays editable through TexText.
 
 The `Circuit` records drawing geometry only. It does not infer electrical
@@ -148,10 +146,10 @@ circuit.box((10, 18), (60, 95), id="effective-junction")
 
 | Module | Contents |
 | --- | --- |
-| `cirquit.core` | `Circuit`: the SVG root and unique ids, nodes, wire routing, labels, `box()`, `to_svg_document()`, and the drawing API symbols are built from |
-| `cirquit.elements` | the symbol library: `capacitor`, `inductor`, `junction`, `harmonic_junction`, `harmonic_glyph`, `harmonic_sum`, `ground` |
-| `cirquit.geometry` | value types and checks shared by both: `Point`, `Box`, `Branch`, `positive`, `offset`, … |
-| `cirquit.node` | `Node`, a named, placed connection point |
+| `vecwire.core` | `Circuit`: the SVG root and unique ids, nodes, wire routing, labels, `box()`, `to_svg_document()`, and the drawing API symbols are built from |
+| `vecwire.elements` | the symbol library: `capacitor`, `inductor`, `junction`, `harmonic_junction`, `harmonic_glyph`, `harmonic_sum`, `ground` |
+| `vecwire.geometry` | value types and checks shared by both: `Point`, `Box`, `Branch`, `positive`, `offset`, … |
+| `vecwire.node` | `Node`, a named, placed connection point |
 
 A symbol is a plain function whose first argument is the circuit, and it draws
 only through the public drawing API: `circuit.branch(start, end)` resolves the
@@ -159,7 +157,7 @@ terminals into a `Branch`, `circuit.group(kind, id, branch=...)` opens a
 semantic group with `data-from`/`data-to`, and `line`, `rect`, `dot`, and
 `path` add strokes in the circuit ink. Symbols are written in branch
 coordinates (`branch.at(along, across)`), so one definition serves every
-orientation. A new symbol is a new function, in `cirquit.elements` or your own
+orientation. A new symbol is a new function, in `vecwire.elements` or your own
 script, with no change to the core:
 
 ```python
@@ -201,7 +199,7 @@ it would change every byte of existing figures, or mean passing preformatted
 strings and losing its typed fields. A symbol's size depends on the circuit's
 ink, stroke width, and line caps, which svg.py has no notion of, so element
 code would get longer, not shorter. The canvas needs lxml anyway, to embed
-Vectex fragments and reorder connection dots. (Its `svg.A` is also the `<a>`
+VecTeX fragments and reorder connection dots. (Its `svg.A` is also the `<a>`
 element, not an arc.)
 
 ## Development
@@ -220,14 +218,14 @@ should be one the change intended.
 
 ## Related projects
 
-cirquit is developed alongside [FigForge](https://github.com/maiani/figforge),
+VecWire is developed alongside [FigWorks](https://github.com/maiani/figworks),
 which composes multi-panel figures, and two other producers of editable SVG:
-[Vectex](https://github.com/maiani/vectex) (TeX equations) and
-[vecview](https://github.com/maiani/vecview) (layered 3D schematics). All four
+[VecTeX](https://github.com/maiani/vectex) (TeX equations) and
+[VecView](https://github.com/maiani/vecview) (layered 3D schematics). All four
 share one premise: figures generated from code, with stable ids and
 byte-identical output, that stay editable in Inkscape.
 
-cirquit does not depend on FigForge. FigForge places a `Circuit` in a panel
+VecWire does not depend on FigWorks. FigWorks places a `Circuit` in a panel
 through `to_svg_document()` alone; see its README.
 
 ## License

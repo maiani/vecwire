@@ -1,6 +1,6 @@
-# Cirquit agent guidance
+# VecWire agent guidance
 
-Cirquit is a focused Python package for readable, deterministic SVG circuit
+VecWire is a focused Python package for readable, deterministic SVG circuit
 schematics, especially circuit-QED publication figures. Keep its public API
 small and grounded in the Fig. 1(a) example.
 
@@ -11,13 +11,13 @@ small and grounded in the Fig. 1(a) example.
   several connected nodes, and its centerline must pass through each of them.
 - Preserve semantic SVG IDs and `data-from`/`data-to` endpoint metadata.
 - Render each routed wire as one SVG path so line joins and corner radii work.
-- Keep output deterministic and editable; use `to_svg_document()` for FigForge integration.
-- Treat Vectex as optional. Plain SVG labels must work without TeX.
+- Keep output deterministic and editable; use `to_svg_document()` for FigWorks integration.
+- Treat VecTeX as optional. Plain SVG labels must work without TeX.
 - Add symbols or routing features when a real figure needs them; avoid a circuit
   simulation or netlist abstraction without an explicit requirement.
-- Keep symbols in `cirquit.elements` as plain functions of the circuit, drawn
-  only through the public drawing API of `cirquit.core` (`branch`, `group`,
-  `line`, `rect`, `dot`, `path`) and `cirquit.geometry`. The library must not
+- Keep symbols in `vecwire.elements` as plain functions of the circuit, drawn
+  only through the public drawing API of `vecwire.core` (`branch`, `group`,
+  `line`, `rect`, `dot`, `path`) and `vecwire.geometry`. The library must not
   import the core at run time; built-in symbols are bound as `Circuit` methods
   by one class attribute each. No registries or plugin hooks.
 - Leave number formatting to the core so output stays byte-identical; check
@@ -28,7 +28,7 @@ small and grounded in the Fig. 1(a) example.
 
 - Supported Python: 3.12 and newer.
 - `uv venv && uv pip install -e '.[dev]'` for a development environment; add
-  `.[tex]` (and a TeX installation) to exercise Vectex labels.
+  `.[tex]` (and a TeX installation) to exercise VecTeX labels.
 - Run `ruff format --check .`, `ruff check .`, `mypy`, and `pytest` before
   reporting a change complete. mypy runs in strict mode on `src`; type the
   duck-typed inputs with a `Protocol`, not `Any`.

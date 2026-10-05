@@ -1,7 +1,7 @@
 """Points, bounds, and branches shared by the canvas and the symbol library.
 
-This module imports nothing else from cirquit except ``Node``, so both the core
-canvas and the symbols in ``cirquit.elements`` can use it.
+This module imports nothing else from vecwire except ``Node``, so both the core
+canvas and the symbols in ``vecwire.elements`` can use it.
 """
 
 from __future__ import annotations

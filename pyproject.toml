@@ -3,8 +3,8 @@ requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
 [project]
-name = "cirquit"
-version = "0.1.0"
+name = "vecwire"
+version = "0.2.0"
 description = "Readable, editable SVG schematics for electrical and circuit-QED circuits"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -26,15 +26,15 @@ classifiers = [
 dependencies = ["lxml>=4.9"]
 
 [project.urls]
-Source = "https://github.com/maiani/cirquit"
-Issues = "https://github.com/maiani/cirquit/issues"
+Source = "https://github.com/maiani/vecwire"
+Issues = "https://github.com/maiani/vecwire/issues"
 
 [project.optional-dependencies]
 tex = ["vectex>=0.1"]
 dev = ["lxml-stubs>=0.5", "mypy>=1.10", "pytest>=8", "ruff>=0.12"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/cirquit"]
+packages = ["src/vecwire"]
 
 [tool.hatch.build.targets.sdist]
 include = [
@@ -68,5 +68,5 @@ select = ["B", "E", "F", "I", "N", "RUF", "S", "UP"]
 [tool.mypy]
 python_version = "3.12"
 strict = true
-packages = ["cirquit"]
+packages = ["vecwire"]
 mypy_path = "src"

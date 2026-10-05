@@ -2,7 +2,7 @@
 
 ``Circuit`` owns everything that is not a circuit symbol: the SVG root and its
 ids, placed nodes, wire routing, labels, dashed boxes, and serialization. It
-also offers the small drawing API the symbols in ``cirquit.elements`` are built
+also offers the small drawing API the symbols in ``vecwire.elements`` are built
 from (``branch``, ``group``, ``line``, ``rect``, ``dot``, ``path``), so a new
 symbol is written against that API alone and never needs a change here.
 """
@@ -31,11 +31,11 @@ type PathCommand = tuple[str, *tuple[float, ...]]
 
 @runtime_checkable
 class Fragment(Protocol):
-    """An SVG fragment accepted as a label, such as a Vectex fragment.
+    """An SVG fragment accepted as a label, such as a VecTeX fragment.
 
     It has a size in user units and serializes to one SVG element, usually a
     ``<g>``, with its origin at the top-left corner. Matching is structural:
-    any object with these three members qualifies, so Vectex stays optional.
+    any object with these three members qualifies, so VecTeX stays optional.
     """
 
     @property
@@ -99,7 +99,7 @@ class Circuit:
         self._nodes: dict[str, Node] = {}
         self._visible_nodes: list[etree._Element] = []
 
-    # Built-in symbols. Each is a plain function in ``cirquit.elements`` whose
+    # Built-in symbols. Each is a plain function in ``vecwire.elements`` whose
     # first argument is the circuit, so binding it here makes
     # ``circuit.capacitor(a, b)`` the same call as ``capacitor(circuit, a, b)``.
     capacitor = elements.capacitor
@@ -488,7 +488,7 @@ class Circuit:
     # ------------------------------------------------------------ document
 
     def to_svg_document(self) -> str:
-        """Return a standalone SVG string, also accepted by FigForge's source protocol."""
+        """Return a standalone SVG string, also accepted by FigWorks's source protocol."""
         root = deepcopy(self._root)
         if self._visible_nodes:
             # Connection dots are drawn last so that no wire or symbol covers them.

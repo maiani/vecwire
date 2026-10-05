@@ -1,7 +1,7 @@
 """Fig. 1(a): a shunted junction circuit, ready to insert in a larger figure.
 
 Run ``python examples/fig1a_cqed.py`` after ``pip install -e .``.
-Use ``--tex`` for editable Vectex labels (requires pdflatex and dvisvgm).
+Use ``--tex`` for editable VecTeX labels (requires pdflatex and dvisvgm).
 """
 
 from __future__ import annotations
@@ -9,7 +9,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from cirquit import Circuit
+from vecwire import Circuit
 
 INK = "#262626"
 GREY = "#737373"

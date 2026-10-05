@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 from lxml import etree
 
-from cirquit import Circuit
+from vecwire import Circuit
 
 NS = {"s": "http://www.w3.org/2000/svg"}
 

@@ -8,11 +8,11 @@ from pathlib import Path
 import pytest
 from lxml import etree
 
-import cirquit
-from cirquit import Branch, Circuit, elements
+import vecwire
+from vecwire import Branch, Circuit, elements
 
 NS = {"s": "http://www.w3.org/2000/svg"}
-ELEMENTS_DIR = Path(cirquit.__file__).parent / "elements"
+ELEMENTS_DIR = Path(vecwire.__file__).parent / "elements"
 
 
 def _root(circuit: Circuit):
@@ -141,7 +141,7 @@ def test_library_functions_and_circuit_methods_draw_the_same_document():
 
 
 def resistor(circuit: Circuit, start, end, *, id=None, zigzags=3, color=None):
-    """A symbol defined outside cirquit, written against the public drawing API only."""
+    """A symbol defined outside VecWire, written against the public drawing API only."""
     branch = circuit.branch(start, end)
     group = circuit.group("resistor", id, branch=branch, data={"zigzags": zigzags})
     lead = branch.length / 4
@@ -210,4 +210,4 @@ def test_elements_use_only_the_public_api(path):
                 assert not alias.name.startswith("_"), f"imports private {alias.name}"
     for node in _runtime_imports(tree):
         # The core imports the library to bind its methods, so never the reverse.
-        assert node.module != "core", f"{path.name} imports cirquit.core at runtime"
+        assert node.module != "core", f"{path.name} imports vecwire.core at runtime"

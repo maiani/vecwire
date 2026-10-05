@@ -9,7 +9,7 @@ Bottom: an inductor in series with a sinusoidal junction (dashed box) acts on
 the outer phase like a multiharmonic junction ``cos phi + cos 2phi + ...``.
 
 Run ``python examples/harmonic_junctions.py`` after ``pip install -e .``.
-Use ``--tex`` for editable Vectex labels (requires pdflatex and dvisvgm).
+Use ``--tex`` for editable VecTeX labels (requires pdflatex and dvisvgm).
 """
 
 from __future__ import annotations
@@ -17,7 +17,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from cirquit import Circuit
+from vecwire import Circuit
 
 INK = "#262626"
 SHADES = ("#4a3aa7", "#8075c1", "#a59dd3")  # orders m = 1, 2, 3 in one hue

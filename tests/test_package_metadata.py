@@ -9,7 +9,7 @@ from typing import Any
 
 import pytest
 
-import cirquit
+import vecwire
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -20,23 +20,23 @@ def pyproject() -> dict[str, Any]:
 
 
 def test_version_matches_the_installed_distribution() -> None:
-    assert cirquit.__version__ == importlib.metadata.version("cirquit")
+    assert vecwire.__version__ == importlib.metadata.version("vecwire")
 
 
 def test_version_matches_pyproject(pyproject: dict[str, Any]) -> None:
-    assert cirquit.__version__ == pyproject["project"]["version"]
+    assert vecwire.__version__ == pyproject["project"]["version"]
 
 
 def test_all_names_are_importable() -> None:
-    for name in cirquit.__all__:
-        assert hasattr(cirquit, name), name
+    for name in vecwire.__all__:
+        assert hasattr(vecwire, name), name
 
 
 def test_package_ships_type_information() -> None:
-    assert (ROOT / "src" / "cirquit" / "py.typed").is_file()
+    assert (ROOT / "src" / "vecwire" / "py.typed").is_file()
 
 
 def test_runtime_dependencies_stay_minimal(pyproject: dict[str, Any]) -> None:
-    """Vectex labels are optional; plain SVG labels must work without TeX."""
+    """VecTeX labels are optional; plain SVG labels must work without TeX."""
     names = {d.split(">")[0].split("=")[0].strip() for d in pyproject["project"]["dependencies"]}
     assert names == {"lxml"}

@@ -1,7 +1,7 @@
 """Editable SVG schematics for electrical and circuit-QED circuits.
 
-``Circuit`` (in ``cirquit.core``) is the canvas; the symbols live in
-``cirquit.elements`` and are also available as ``Circuit`` methods.
+``Circuit`` (in ``vecwire.core``) is the canvas; the symbols live in
+``vecwire.elements`` and are also available as ``Circuit`` methods.
 """
 
 from . import elements
@@ -9,6 +9,6 @@ from .core import Circuit
 from .geometry import Box, Branch
 from .node import Node
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 __all__ = ["Box", "Branch", "Circuit", "Node", "__version__", "elements"]
