@@ -46,8 +46,8 @@
     <path d="M 46 88 L 54 88 L 62 88" fill="none" stroke="#262626" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g data-component="josephson-junction" id="VJ" data-from="junction_top" data-to="junction_bottom">
-    <line x1="46" y1="60" x2="46" y2="70.4" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
-    <line x1="46" y1="77.6" x2="46" y2="88" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="46" y1="60" x2="46" y2="74" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="46" y1="74" x2="46" y2="88" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
     <line x1="49.6" y1="70.4" x2="42.4" y2="77.6" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
     <line x1="42.4" y1="70.4" x2="49.6" y2="77.6" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
   </g>

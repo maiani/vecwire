@@ -30,8 +30,8 @@ def _segments(group, xpath="./s:line"):
     ]
 
 
-def _undirected(group):
-    return sorted(tuple(sorted((s[:2], s[2:]))) for s in _segments(group))
+def _undirected(segments):
+    return sorted(tuple(sorted((s[:2], s[2:]))) for s in segments)
 
 
 def _vertical():
@@ -51,7 +51,8 @@ def test_bare_junction_is_just_the_x():
     assert group.get("data-harmonic") is None and group.get("data-kind") is None
     assert not group.xpath("./s:rect | ./s:circle", namespaces=NS)
     leads, cross = _segments(group)[:2], _segments(group)[2:]
-    assert leads == [(20, 2, 20, 16), (20, 24, 20, 38)]
+    # The leads run on to the centre of the X, so the wire is unbroken.
+    assert leads == [(20, 2, 20, 20), (20, 20, 20, 38)]
     # Two strokes along the diagonals of the 8 x 8 square centred at (20, 20).
     assert sorted(cross) == [(16, 16, 24, 24), (24, 16, 16, 24)]
     colors = [line.get("stroke") for line in group.xpath("./s:line", namespaces=NS)]
@@ -63,7 +64,10 @@ def test_boxed_first_harmonic_is_the_bare_x_in_a_square():
     bare.junction("top", "bottom", id="jj", size=8)
     boxed.harmonic_junction("top", "bottom", 1, id="jj", size=8)
     bare_group, boxed_group = _group(bare, "jj"), _group(boxed, "jj")
-    assert _undirected(boxed_group) == _undirected(bare_group)  # same leads and X strokes
+    # The same X strokes, possibly drawn in another order or direction.
+    assert _undirected(_segments(boxed_group)[2:]) == _undirected(_segments(bare_group)[2:])
+    # The boxed leads end on the square; the bare ones run on to the centre.
+    assert _segments(boxed_group)[:2] == [(20, 2, 20, 16), (20, 24, 20, 38)]
     rect = boxed_group.xpath("./s:rect", namespaces=NS)[0]
     assert [rect.get(key) for key in ("x", "y", "width", "height")] == ["16", "16", "8", "8"]
     assert (boxed_group.get("data-harmonic"), boxed_group.get("data-kind")) == ("1", "cos")

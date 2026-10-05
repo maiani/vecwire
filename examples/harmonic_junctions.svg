@@ -2,8 +2,8 @@
   <g data-component="node" id="bare_top" data-x="12" data-y="6"/>
   <g data-component="node" id="bare_bottom" data-x="12" data-y="30"/>
   <g data-component="josephson-junction" id="legend-bare" data-from="bare_top" data-to="bare_bottom">
-    <line x1="12" y1="6" x2="12" y2="13.5" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
-    <line x1="12" y1="22.5" x2="12" y2="30" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="12" y1="6" x2="12" y2="18" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="12" y1="18" x2="12" y2="30" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
     <line x1="16.5" y1="13.5" x2="7.5" y2="22.5" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
     <line x1="7.5" y1="13.5" x2="16.5" y2="22.5" stroke="#262626" stroke-width="0.9" stroke-linecap="round"/>
   </g>

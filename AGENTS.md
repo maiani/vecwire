@@ -24,4 +24,17 @@ small and grounded in the Fig. 1(a) example.
   `examples/fig1a.svg` is unchanged after refactors.
 - Preserve user-authored examples and unrelated changes.
 
-Run `pytest`, `ruff check .`, and `ruff format --check .` after changes.
+## Development
+
+- Supported Python: 3.12 and newer.
+- `uv venv && uv pip install -e '.[dev]'` for a development environment; add
+  `.[tex]` (and a TeX installation) to exercise Vectex labels.
+- Run `ruff format --check .`, `ruff check .`, `mypy`, and `pytest` before
+  reporting a change complete. mypy runs in strict mode on `src`; type the
+  duck-typed inputs with a `Protocol`, not `Any`.
+- Run `python examples/fig1a_cqed.py` and `python examples/harmonic_junctions.py`
+  after touching drawing code, and diff what they write against
+  `examples/fig1a.svg` and `examples/harmonic_junctions.svg`. Any byte that
+  changes must be one the change intended.
+- Keep `CHANGELOG.md` current in Keep a Changelog 1.1.0 format.
+- Do not commit, tag, upload, or publish unless the user explicitly asks.

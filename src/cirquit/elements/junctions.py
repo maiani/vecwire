@@ -46,7 +46,7 @@ def _glyph_branch(
 def _leads(
     circuit: Circuit, group: etree._Element, branch: Branch, size: float, color: str | None
 ) -> None:
-    """Draw the two leads from the terminals to a centred glyph of side ``size``."""
+    """Draw the two leads from the terminals to the edge of a centred box of side ``size``."""
     centre = branch.length / 2
     circuit.line(group, branch.start.position, branch.at(centre - size / 2), color=color)
     circuit.line(group, branch.at(centre + size / 2), branch.end.position, color=color)
@@ -64,13 +64,17 @@ def junction(
 ) -> None:
     """Draw a Josephson junction as the bare X, with two leads.
 
-    The X spans the diagonals of a ``size`` square centred on the branch.
+    The X spans the diagonals of a ``size`` square centred on the branch. The
+    leads run on to the centre of the X, so the wire is continuous through it.
     ``color`` sets the X and, unless ``lead_color`` is given, the leads.
     """
     branch, size = _glyph_branch(circuit, start, end, size)
     group = circuit.group("josephson-junction", id, branch=branch)
-    _leads(circuit, group, branch, size, lead_color or color)
     centre = branch.length / 2
+    middle = branch.at(centre)
+    leads = lead_color or color
+    circuit.line(group, branch.start.position, middle, color=leads)
+    circuit.line(group, middle, branch.end.position, color=leads)
     for sign in (-1, 1):
         circuit.line(
             group,
@@ -236,7 +240,7 @@ def harmonic_sum(
             )
     dot_radius = 0.9 * circuit.stroke_width
     terms = []
-    for order, kind, color, across in zip(orders, kinds, palette, centres):
+    for order, kind, color, across in zip(orders, kinds, palette, centres, strict=True):
         term = circuit.group(
             "josephson-junction",
             None if id is None else f"{id}-m{order}",

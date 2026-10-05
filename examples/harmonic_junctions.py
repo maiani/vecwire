@@ -36,7 +36,7 @@ LEGEND = (
 def make_labels(tex: bool) -> dict[str, object]:
     names = [name for name, *_ in LEGEND] + ["L", "approx"]
     if not tex:
-        return dict(zip(names, [text for *_, text, _ in LEGEND] + ["L", "≃"]))
+        return dict(zip(names, [text for *_, text, _ in LEGEND] + ["L", "≃"], strict=True))
 
     import vectex
 
@@ -45,7 +45,7 @@ def make_labels(tex: bool) -> dict[str, object]:
         size_pt=8,
         cache_dir=Path(__file__).parent / "output" / ".vectex-cache",
     )
-    return dict(zip(names, fragments))
+    return dict(zip(names, fragments, strict=True))
 
 
 def build_circuit(*, tex: bool = False) -> Circuit:

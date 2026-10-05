@@ -125,6 +125,15 @@ def test_fragment_label_is_embedded_and_positioned():
     assert group.xpath(".//s:path", namespaces=NS)
 
 
+def test_label_rejects_an_object_that_is_not_a_fragment():
+    class Sized:
+        width = 10
+        height = 4
+
+    with pytest.raises(TypeError, match="width, height, and to_svg"):
+        Circuit(30, 30).label(Sized(), (15, 10))  # type: ignore[arg-type]
+
+
 def _root(circuit: Circuit):
     return etree.fromstring(circuit.to_svg_document().encode())
 
@@ -235,7 +244,7 @@ def test_harmonic_sum_terms_hang_between_rails_joined_to_the_branch():
     for term in group.xpath('./s:g[@data-component="josephson-junction"]', namespaces=NS):
         assert not term.xpath("./s:circle", namespaces=NS)
         tips = [_floats(line, "x2", "y2") for line in term.xpath("./s:line", namespaces=NS)[:2]]
-        for (x, y), side in zip(tips, ("top", "bottom")):
+        for (x, y), side in zip(tips, ("top", "bottom"), strict=True):
             left, right, rail_y = rails[side]
             assert y == pytest.approx(rail_y) and left <= x <= right
 

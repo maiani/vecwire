@@ -42,7 +42,9 @@ def positive_int(value: int, name: str) -> int:
     return value
 
 
-def offset(origin: Point, direction: Point, normal: Point, along: float, across=0.0) -> Point:
+def offset(
+    origin: Point, direction: Point, normal: Point, along: float, across: float = 0.0
+) -> Point:
     """Move ``along`` units in ``direction`` and ``across`` units along ``normal``."""
     return (
         origin[0] + direction[0] * along + normal[0] * across,

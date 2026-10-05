@@ -14,7 +14,7 @@ from copy import deepcopy
 from itertools import pairwise
 from math import acos, hypot, tan
 from pathlib import Path
-from typing import Any
+from typing import Protocol, runtime_checkable
 
 from lxml import etree
 
@@ -24,8 +24,27 @@ from .node import Node
 
 SVG_NS = "http://www.w3.org/2000/svg"
 
-NodeRef = Node | str
-PathCommand = tuple[str | float, ...]
+type NodeRef = Node | str
+# A path command letter followed by its numbers, e.g. ``("M", x, y)``.
+type PathCommand = tuple[str, *tuple[float, ...]]
+
+
+@runtime_checkable
+class Fragment(Protocol):
+    """An SVG fragment accepted as a label, such as a Vectex fragment.
+
+    It has a size in user units and serializes to one SVG element, usually a
+    ``<g>``, with its origin at the top-left corner. Matching is structural:
+    any object with these three members qualifies, so Vectex stays optional.
+    """
+
+    @property
+    def width(self) -> float: ...
+
+    @property
+    def height(self) -> float: ...
+
+    def to_svg(self) -> str: ...
 
 
 def _number(value: float) -> str:
@@ -69,7 +88,9 @@ class Circuit:
         self.corner_radius = nonnegative(corner_radius, "corner_radius")
         self._root = etree.Element(
             _tag("svg"),
-            nsmap={None: SVG_NS},
+            # lxml-stubs types nsmap as Mapping[str, str], but lxml takes the
+            # None key for the default namespace; without it every tag is prefixed.
+            nsmap={None: SVG_NS},  # type: ignore[dict-item]
             width=f"{_number(self.width)}{unit}",
             height=f"{_number(self.height)}{unit}",
             viewBox=f"0 0 {_number(self.width)} {_number(self.height)}",
@@ -181,7 +202,7 @@ class Circuit:
         attrs = {"data-component": kind}
         if id is not None:
             attrs["id"] = id
-        group = etree.SubElement(self._root if parent is None else parent, _tag("g"), **attrs)
+        group = etree.SubElement(self._root if parent is None else parent, _tag("g"), attrs)
         if branch is not None:
             group.set("data-from", branch.start.name)
             group.set("data-to", branch.end.name)
@@ -202,12 +223,12 @@ class Circuit:
         etree.SubElement(
             parent,
             _tag("line"),
-            x1=_number(start[0]),
-            y1=_number(start[1]),
-            x2=_number(end[0]),
-            y2=_number(end[1]),
-            stroke=color or self.stroke,
-            **{
+            {
+                "x1": _number(start[0]),
+                "y1": _number(start[1]),
+                "x2": _number(end[0]),
+                "y2": _number(end[1]),
+                "stroke": color or self.stroke,
                 "stroke-width": _number(width or self.stroke_width),
                 "stroke-linecap": self.linecap,
             },
@@ -229,16 +250,15 @@ class Circuit:
         same way and the output stays byte-stable.
         """
         d = " ".join(
-            " ".join([str(name), *(_number(value) for value in values)])
-            for name, *values in commands
+            " ".join([name, *(_number(value) for value in values)]) for name, *values in commands
         )
         etree.SubElement(
             parent,
             _tag("path"),
-            d=d,
-            fill="none",
-            stroke=color or self.stroke,
-            **{
+            {
+                "d": d,
+                "fill": "none",
+                "stroke": color or self.stroke,
                 "stroke-width": _number(width or self.stroke_width),
                 "stroke-linecap": self.linecap if linecap is None else self._linecap(linecap),
                 "stroke-linejoin": self.linejoin if linejoin is None else self._linejoin(linejoin),
@@ -275,7 +295,7 @@ class Circuit:
             attrs["stroke-dasharray"] = " ".join(
                 _number(positive(value, "dash length")) for value in dash
             )
-        etree.SubElement(parent, _tag("rect"), **attrs)
+        etree.SubElement(parent, _tag("rect"), attrs)
         return Box(left, top, right, bottom)
 
     def dot(
@@ -285,10 +305,12 @@ class Circuit:
         etree.SubElement(
             parent,
             _tag("circle"),
-            cx=_number(at[0]),
-            cy=_number(at[1]),
-            r=_number(radius),
-            fill=color or self.stroke,
+            {
+                "cx": _number(at[0]),
+                "cy": _number(at[1]),
+                "r": _number(radius),
+                "fill": color or self.stroke,
+            },
         )
 
     # ------------------------------------------------------------ wires
@@ -323,7 +345,8 @@ class Circuit:
         for first, second in pairwise(checked):
             if first == second:
                 raise ValueError("A wire segment cannot have zero length")
-        for prev, vertex, following in zip(checked, checked[1:], checked[2:]):
+        # Sliding window over consecutive vertices; the shorter slices end it.
+        for prev, vertex, following in zip(checked, checked[1:], checked[2:], strict=False):
             incoming = (vertex[0] - prev[0], vertex[1] - prev[1])
             outgoing = (following[0] - vertex[0], following[1] - vertex[1])
             cross = incoming[0] * outgoing[1] - incoming[1] * outgoing[0]
@@ -351,7 +374,7 @@ class Circuit:
         """Build path commands with circular fillets at routed corners."""
         commands: list[PathCommand] = [("M", *points[0])]
         for index, (prev, vertex, following) in enumerate(
-            zip(points, points[1:], points[2:]), start=1
+            zip(points, points[1:], points[2:], strict=False), start=1
         ):
             if radius == 0 or index not in roundable:
                 commands.append(("L", *vertex))
@@ -417,7 +440,7 @@ class Circuit:
 
     def label(
         self,
-        content: str | Any,
+        content: str | Fragment,
         at: NodeRef | Point,
         *,
         id: str | None = None,
@@ -446,9 +469,9 @@ class Circuit:
                 "text-anchor": {"l": "start", "c": "middle", "r": "end"}[anchor[0]],
                 "dominant-baseline": {"t": "hanging", "c": "middle", "b": "auto"}[anchor[1]],
             }
-            etree.SubElement(group, _tag("text"), **attrs).text = content
+            etree.SubElement(group, _tag("text"), attrs).text = content
             return
-        if not all(hasattr(content, name) for name in ("width", "height", "to_svg")):
+        if not isinstance(content, Fragment):
             raise TypeError(
                 "label expects text or an SVG fragment with width, height, and to_svg()"
             )

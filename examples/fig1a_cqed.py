@@ -18,7 +18,7 @@ GREY = "#737373"
 def make_labels(tex: bool) -> dict[str, object]:
     names = ("C", "L", "VJ", "CJ", "phi", "delta")
     if not tex:
-        return dict(zip(names, ("C", "L", "Vⱼ", "Cⱼ", "φ", "δ")))
+        return dict(zip(names, ("C", "L", "Vⱼ", "Cⱼ", "φ", "δ"), strict=True))
 
     import vectex
 
@@ -27,7 +27,7 @@ def make_labels(tex: bool) -> dict[str, object]:
         size_pt=8,
         cache_dir=Path(__file__).parent / "output" / ".vectex-cache",
     )
-    return dict(zip(names, fragments))
+    return dict(zip(names, fragments, strict=True))
 
 
 def build_circuit(*, tex: bool = False) -> Circuit:

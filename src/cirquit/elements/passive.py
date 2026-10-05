@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 from ..geometry import positive, positive_int
 
 if TYPE_CHECKING:
-    from ..core import Circuit, NodeRef
+    from ..core import Circuit, NodeRef, PathCommand
 
 
 def capacitor(
@@ -56,7 +56,7 @@ def inductor(
     # Bulge to the same side of the screen whatever the terminal order.
     dx, dy = branch.direction
     sweep = 1 if dy > 0 or dx < 0 else 0
-    commands = [("M", *branch.start.position)]
+    commands: list[PathCommand] = [("M", *branch.start.position)]
     for index in range(1, turns + 1):
         commands.append(("A", radius, radius, 0, 0, sweep, *branch.at(2 * radius * index)))
     circuit.path(group, commands, color=color)
