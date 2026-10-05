@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    # 3.15 is tracked before it is supported: until its final release, and
+    # until lxml ships wheels for it, it may fail without failing the run.
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13", "3.14"]
+        experimental: [false]
+        include:
+          - python-version: "3.15"
+            experimental: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          allow-prereleases: ${{ matrix.experimental }}
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e ".[dev,tex]"
+      - run: ruff format --check .
+      - run: ruff check .
+      - run: mypy
+      - run: pytest
