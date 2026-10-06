@@ -214,7 +214,7 @@ element, not an arc.)
 python -m pip install -e '.[dev]'
 ruff format --check .
 ruff check .
-mypy
+ty check
 pytest
 ```
 

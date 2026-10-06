@@ -90,7 +90,7 @@ class Circuit:
             _tag("svg"),
             # lxml-stubs types nsmap as Mapping[str, str], but lxml takes the
             # None key for the default namespace; without it every tag is prefixed.
-            nsmap={None: SVG_NS},  # type: ignore[dict-item]
+            nsmap={None: SVG_NS},  # ty: ignore[invalid-argument-type]
             width=f"{_number(self.width)}{unit}",
             height=f"{_number(self.height)}{unit}",
             viewBox=f"0 0 {_number(self.width)} {_number(self.height)}",

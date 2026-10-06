@@ -29,8 +29,8 @@ small and grounded in the Fig. 1(a) example.
 - Supported Python: 3.12 and newer.
 - `uv venv && uv pip install -e '.[dev]'` for a development environment; add
   `.[tex]` (and a TeX installation) to exercise VecTeX labels.
-- Run `ruff format --check .`, `ruff check .`, `mypy`, and `pytest` before
-  reporting a change complete. mypy runs in strict mode on `src`; type the
+- Run `ruff format --check .`, `ruff check .`, `ty check`, and `pytest` before
+  reporting a change complete. ty checks `src`; type the
   duck-typed inputs with a `Protocol`, not `Any`.
 - Run `python examples/fig1a_cqed.py` and `python examples/harmonic_junctions.py`
   after touching drawing code, and diff what they write against

@@ -32,7 +32,7 @@ Issues = "https://github.com/maiani/vecwire/issues"
 
 [project.optional-dependencies]
 tex = ["vectex>=0.1"]
-dev = ["lxml-stubs>=0.5", "mypy>=1.10", "pytest>=8", "ruff>=0.12"]
+dev = ["lxml-stubs>=0.5", "ty>=0.0.84", "pytest>=8", "ruff>=0.12"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/vecwire"]
@@ -59,15 +59,14 @@ line-length = 100
 target-version = "py312"
 
 [tool.ruff.lint]
+# Keep library signatures annotated; ty checks their types.
+extend-select = ["ANN001", "ANN002", "ANN003", "ANN201", "ANN202", "ANN204", "ANN205", "ANN206"]
 select = ["B", "E", "F", "I", "N", "RUF", "S", "UP"]
 
 [tool.ruff.lint.per-file-ignores]
 # S314: tests parse SVG this package just generated, not untrusted input.
-"tests/**" = ["S101", "S314"]
-"examples/**" = ["S101"]
+"tests/**" = ["ANN", "S101", "S314"]
+"examples/**" = ["ANN", "S101"]
 
-[tool.mypy]
-python_version = "3.12"
-strict = true
-packages = ["vecwire"]
-mypy_path = "src"
+[tool.ty.src]
+include = ["src"]
