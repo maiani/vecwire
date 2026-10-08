@@ -453,6 +453,8 @@ class Circuit:
 
         ``anchor`` combines horizontal ``l/c/r`` and vertical ``t/c/b``.
         Fragments must expose ``width``, ``height``, and ``to_svg()``.
+        ``color`` (default: the circuit's stroke) colours text, and a fragment
+        drawn in ``currentColor``, as VecTeX's are, unless it carries its own.
         """
         x, y = self._position(at)
         dx, dy = point(offset)
@@ -460,7 +462,8 @@ class Circuit:
         if len(anchor) != 2 or anchor[0] not in "lcr" or anchor[1] not in "tcb":
             raise ValueError("anchor must combine l/c/r with t/c/b")
         group = self.group("label", id)
-        group.set("fill", color or self.stroke)
+        ink = color or self.stroke
+        group.set("fill", ink)
         if isinstance(content, str):
             attrs = {
                 "x": _number(x),
@@ -482,6 +485,9 @@ class Circuit:
         dx = {"l": 0, "c": -width / 2, "r": -width}[anchor[0]]
         dy = {"t": 0, "c": -height / 2, "b": -height}[anchor[1]]
         group.set("transform", f"translate({_number(x + dx)} {_number(y + dy)})")
+        # VecTeX paints its glyphs in currentColor, which follows `color`, not
+        # `fill`; a fragment rendered with a colour of its own keeps it.
+        group.set("color", ink)
         parser = etree.XMLParser(resolve_entities=False, no_network=True, load_dtd=False)
         group.append(deepcopy(etree.fromstring(content.to_svg().encode(), parser=parser)))
 

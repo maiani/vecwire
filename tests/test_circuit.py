@@ -125,6 +125,25 @@ def test_fragment_label_is_embedded_and_positioned():
     assert group.xpath(".//s:path", namespaces=NS)
 
 
+def test_fragment_label_takes_the_label_colour_through_current_color():
+    """VecTeX paints in currentColor, which follows `color`, not `fill`."""
+
+    class Fragment:
+        width = 10
+        height = 4
+
+        def to_svg(self):
+            return '<g xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M 0 0"/></g>'
+
+    circuit = Circuit(30, 30, stroke="#262626")
+    circuit.label(Fragment(), (15, 10), id="grey", color="#737373")
+    circuit.label(Fragment(), (15, 20), id="ink")
+    root = _root(circuit)
+    for id, colour in (("grey", "#737373"), ("ink", "#262626")):
+        group = root.xpath(f'//s:g[@id="{id}"]', namespaces=NS)[0]
+        assert (group.get("fill"), group.get("color")) == (colour, colour)
+
+
 def test_label_rejects_an_object_that_is_not_a_fragment():
     class Sized:
         width = 10

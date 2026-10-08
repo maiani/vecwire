@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Use ty for type checking in development and CI instead of mypy.
 
+### Fixed
+
+- `label(..., color=...)` colours VecTeX fragments again. Since VecTeX 0.3 a
+  fragment paints in `currentColor`, which follows the CSS `color`, not the
+  `fill` the label group set, so every TeX label came out black: the grey
+  `C_J` of `fig1a_cqed.py --tex` among them. A fragment label's group now sets
+  `color` too, to the label colour or the circuit's stroke; a fragment rendered
+  with a colour of its own keeps it. Plain-text labels are unchanged.
+
 ## [0.2.0] - 2026-10-05
 
 ### Changed
