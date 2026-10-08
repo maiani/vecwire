@@ -32,6 +32,11 @@ small and grounded in the Fig. 1(a) example.
 - Run `ruff format --check .`, `ruff check .`, `ty check`, and `pytest` before
   reporting a change complete. ty checks `src`; type the
   duck-typed inputs with a `Protocol`, not `Any`.
+- Typing serves the code, not the other way round. Type public signatures and
+  what types naturally, and keep `ty check` passing; where precise types would
+  contort the code -- a decorator that changes what a parameter accepts, say --
+  use a looser annotation or a targeted `# ty: ignore[code]`. Do not raise the
+  Python floor for typing features.
 - Run `python examples/fig1a_cqed.py` and `python examples/harmonic_junctions.py`
   after touching drawing code, and diff what they write against
   `examples/fig1a.svg` and `examples/harmonic_junctions.svg`. Any byte that
