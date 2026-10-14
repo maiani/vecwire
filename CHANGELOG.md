@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Optional `font_family` on plain-text `Circuit.label` calls, so labels can
   use the same typeface as other figure sources.
+- `Circuit.to_svg_document()` credits VecWire: the document opens with Dublin
+  Core metadata naming "VecWire vX, https://github.com/maiani/vecwire" as its
+  creator, as Matplotlib and Inkscape do. The circuit's own tree is unchanged.
 
 ### Changed
 

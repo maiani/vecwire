@@ -1,4 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="206pt" height="112pt" viewBox="0 0 206 112">
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#">
+      <cc:Work>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>VecWire v0.2.0, https://github.com/maiani/vecwire</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
   <g data-component="node" id="bare_top" data-x="12" data-y="6"/>
   <g data-component="node" id="bare_bottom" data-x="12" data-y="30"/>
   <g data-component="josephson-junction" id="legend-bare" data-from="bare_top" data-to="bare_bottom">

@@ -501,6 +501,7 @@ class Circuit:
     def to_svg_document(self) -> str:
         """Return a standalone SVG string, also accepted by FigWorks's source protocol."""
         root = deepcopy(self._root)
+        root.insert(0, _credit())
         if self._visible_nodes:
             # Connection dots are drawn last so that no wire or symbol covers them.
             by_id = {group.get("id"): group for group in root}
@@ -511,3 +512,18 @@ class Circuit:
     def write_svg(self, path: str | Path) -> None:
         """Write the standalone SVG document."""
         Path(path).write_text(self.to_svg_document(), encoding="utf-8")
+
+
+def _credit() -> etree._Element:
+    """Dublin Core metadata naming VecWire the document's creator."""
+    from vecwire import __version__
+
+    return etree.fromstring(
+        '<metadata xmlns="http://www.w3.org/2000/svg">'
+        '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"'
+        ' xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#">'
+        '<cc:Work><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>'
+        "<dc:creator><cc:Agent>"
+        f"<dc:title>VecWire v{__version__}, https://github.com/maiani/vecwire</dc:title>"
+        "</cc:Agent></dc:creator></cc:Work></rdf:RDF></metadata>"
+    )

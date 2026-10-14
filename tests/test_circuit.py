@@ -355,3 +355,17 @@ def test_plain_label_explicit_font_family():
     label = root.find(".//{http://www.w3.org/2000/svg}text")
     assert label.get("font-family") == "TeX Gyre Heros"
     assert label.get("font-size") == "9"
+
+
+def test_document_credits_vecwire() -> None:
+    import vecwire
+
+    circuit = Circuit(40, 20)
+    document = circuit.to_svg_document()
+
+    assert (
+        f"<dc:title>VecWire v{vecwire.__version__}, https://github.com/maiani/vecwire" in document
+    )
+    # The credit is written into the document, not kept in the circuit's own tree.
+    assert circuit.to_svg_document() == document
+    assert document.count("<metadata") == 1
