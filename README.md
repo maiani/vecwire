@@ -106,6 +106,16 @@ The `Circuit` records drawing geometry only. It does not infer electrical
 topology or compute circuit parameters; those belong to the scientific model
 that produces the figure.
 
+Plain-text labels accept `font_family` and `size` (in the circuit's user units):
+
+```python
+circuit.label("Capacitance", (40, 20), size=8, font_family="TeX Gyre Heros")
+```
+
+Omitting `font_family` preserves inherited SVG typography. For fragment labels,
+choose typography when rendering the fragment; these text options do not
+rescale or replace its glyphs.
+
 ## Josephson junctions
 
 `junction()` draws the bare X, the standard Josephson-junction symbol, which

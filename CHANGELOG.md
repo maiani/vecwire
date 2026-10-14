@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Optional `font_family` on plain-text `Circuit.label` calls, so labels can
+  use the same typeface as other figure sources.
+
 ### Changed
 
 - Use ty for type checking in development and CI instead of mypy.

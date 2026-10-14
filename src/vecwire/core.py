@@ -447,12 +447,15 @@ class Circuit:
         anchor: str = "cc",
         color: str | None = None,
         size: float = 8,
+        font_family: str | None = None,
         offset: Point = (0, 0),
     ) -> None:
         """Place plain text or a Vectex-like fragment at an anchored position.
 
         ``anchor`` combines horizontal ``l/c/r`` and vertical ``t/c/b``.
         Fragments must expose ``width``, ``height``, and ``to_svg()``.
+        ``size`` is in circuit user units; ``font_family`` selects the typeface
+        for plain text. Fragment typography is set when the fragment is rendered.
         ``color`` (default: the circuit's stroke) colours text, and a fragment
         drawn in ``currentColor``, as VecTeX's are, unless it carries its own.
         """
@@ -472,6 +475,8 @@ class Circuit:
                 "text-anchor": {"l": "start", "c": "middle", "r": "end"}[anchor[0]],
                 "dominant-baseline": {"t": "hanging", "c": "middle", "b": "auto"}[anchor[1]],
             }
+            if font_family is not None:
+                attrs["font-family"] = font_family
             etree.SubElement(group, _tag("text"), attrs).text = content
             return
         if not isinstance(content, Fragment):

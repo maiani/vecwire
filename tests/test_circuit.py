@@ -346,3 +346,12 @@ def test_harmonic_example_is_deterministic():
         ("3", "cos"),
         ("1", "sin"),
     ]
+
+
+def test_plain_label_explicit_font_family():
+    circuit = Circuit(80, 40)
+    circuit.label("Energy", (10, 10), font_family="TeX Gyre Heros", size=9)
+    root = etree.fromstring(circuit.to_svg_document().encode())
+    label = root.find(".//{http://www.w3.org/2000/svg}text")
+    assert label.get("font-family") == "TeX Gyre Heros"
+    assert label.get("font-size") == "9"
