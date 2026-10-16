@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- A publish workflow: a pushed `v<version>` tag is checked against the package
+  version, tested on the full CI matrix, built, checked with `twine check
+  --strict`, and uploaded to PyPI by trusted publishing. `docs/development.md`
+  describes the release steps.
 - Optional `font_family` on plain-text `Circuit.label` calls, so labels can
   use the same typeface as other figure sources.
 - `Circuit.to_svg_document()` credits VecWire: the document opens with Dublin

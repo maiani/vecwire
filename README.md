@@ -230,7 +230,8 @@ pytest
 
 After touching drawing code, rerun both examples and diff their output against
 `examples/fig1a.svg` and `examples/harmonic_junctions.svg`; every changed byte
-should be one the change intended.
+should be one the change intended. Releases are described in
+[docs/development.md](https://github.com/maiani/vecwire/blob/main/docs/development.md).
 
 ## Related projects
 
