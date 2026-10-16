@@ -6,32 +6,31 @@ afterwards: each component becomes a named SVG group, the same script writes
 byte-identical SVG, and the output opens in Inkscape.
 
 <p align="center">
-  <img src="docs/images/readme.svg" alt="A circuit-QED schematic: capacitor, inductor and a Josephson junction with its capacitance, labels typeset by TeX" width="340">
+  <img src="https://raw.githubusercontent.com/maiani/vecwire/v0.3.0/docs/images/readme.svg" alt="A circuit-QED schematic: capacitor, inductor and a Josephson junction with its capacitance, labels typeset by TeX" width="340">
 </p>
 
-<p align="center"><sub>A circuit-QED schematic with labels typeset by VecTeX, from <code>examples/fig1a_cqed.py --tex</code>.</sub></p>
+<p align="center"><sub>A circuit-QED schematic with labels typeset by VecTeX, from <a href="https://github.com/maiani/vecwire/blob/v0.3.0/examples/fig1a_cqed.py"><code>examples/fig1a_cqed.py</code></a> with <code>--tex</code>.</sub></p>
 
 The symbol set covers wires, capacitors, inductors, Josephson junctions (the
 bare X, boxed harmonic junctions, and multiharmonic junctions), ground symbols,
 connection nodes, dashed enclosures, and labels. Components connect named,
 positioned nodes and draw their own leads.
 
-VecWire is pre-alpha: a first version, not yet on PyPI, with an API that will
-change.
+VecWire is alpha: an early version, with an API that will still change.
 
 ## Install
 
-VecWire is not on PyPI yet. Install it from GitHub (Python 3.12 or newer):
+VecWire needs Python 3.12 or newer:
 
 ```bash
-python -m pip install "vecwire @ git+https://github.com/maiani/vecwire"
+python -m pip install vecwire
 ```
 
 The only runtime dependency is lxml. For labels typeset by TeX, install the
 optional VecTeX extra; VecTeX also needs `pdflatex` and `dvisvgm` on `PATH`:
 
 ```bash
-python -m pip install -e '/path/to/vecwire[tex]'
+python -m pip install "vecwire[tex]"
 ```
 
 ## Quick start
@@ -73,8 +72,8 @@ with a parallel junction branch of `V_J` and `C_J`, marking the node phases `φ`
 and `δ`. `harmonic_junctions.py` draws the bare X beside the boxed
 `m = 1, 2, 3` and `sin` symbols, and an inductor in series with a sinusoidal
 junction next to the multiharmonic junction it acts like. Both previews are
-checked in: [fig1a.svg](examples/fig1a.svg) and
-[harmonic_junctions.svg](examples/harmonic_junctions.svg). Without `--tex`
+checked in: [fig1a.svg](https://github.com/maiani/vecwire/blob/v0.3.0/examples/fig1a.svg) and
+[harmonic_junctions.svg](https://github.com/maiani/vecwire/blob/v0.3.0/examples/harmonic_junctions.svg). Without `--tex`
 the examples use plain SVG text and need no TeX installation.
 
 ## Nodes and wires

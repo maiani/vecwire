@@ -9,6 +9,6 @@ from .core import Circuit
 from .geometry import Box, Branch
 from .node import Node
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 __all__ = ["Box", "Branch", "Circuit", "Node", "__version__", "elements"]
